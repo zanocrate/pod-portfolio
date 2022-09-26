@@ -1,0 +1,11 @@
+model {
+    for (i in 1:length(X)){
+        X[i] ~ dpois(lambda);
+    }
+    # same trick as shown in slides: 
+    # use a very slowly decaying exponential distribution
+    # as a uniform one
+    lambda ~ dexp(0.00001) ;
+
+    Y ~ dpois(lambda);
+}
